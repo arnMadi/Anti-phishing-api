@@ -85,5 +85,8 @@ def analyze():
     })
 
 if __name__ == '__main__':
-    # On tourne sur le port 5000 par défaut
-    app.run(debug=True, port=5000)
+    import os
+    # Render définit une variable d'environnement 'PORT'. Si elle n'existe pas, on prend 5000.
+    port = int(os.environ.get("PORT", 5000))
+    # On utilise host='0.0.0.0' pour que le serveur soit accessible depuis l'extérieur
+    app.run(host='0.0.0.0', port=port, debug=False)
